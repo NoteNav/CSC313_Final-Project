@@ -3,10 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/amorn/Documents/Projects/CSC313_Final-Project/app/src/main/res/layout/activity_login.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/amorn/Documents/Projects/CSC313_Final-Project/app/src/main/res/layout/activity_logout.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/amorn/Documents/Projects/CSC313_Final-Project/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/amorn/Documents/Projects/CSC313_Final-Project/app/src/main/res/menu/menu_main.xml" value="0.1" />
+        <entry key="..\:/CodingApps/SchoolProject/CSC313/FinalProjet/app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
   </component>
