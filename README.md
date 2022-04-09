@@ -11,16 +11,15 @@ Original App Design Project
 
 ## Overview
 ### Description
-[Description of your app]
+Virtual note where it shows the place that the user visit and make a note
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Social Networking
+- **Mobile:** For mobiles/tablets
+- **Story:** Users can make a note and record their location
+- **Market:** Any individual could choose to use this app
+- **Habit:** This app could be used as often as the user wanted
+- **Scope:** We start with making virtual note on the place user visit. Potential this can be used for tourism/business purposes
 
 ## Product Spec
 
