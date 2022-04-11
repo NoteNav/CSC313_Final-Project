@@ -11,7 +11,7 @@ Original App Design Project
 
 ## Overview
 ### Description
-Virtual note where it shows the place that the user visit and make a note
+Virtual note where shows the place that the user visits and makes a note.
 
 ### App Evaluation
 - **Category:** Social Networking
