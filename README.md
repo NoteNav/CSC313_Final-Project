@@ -84,12 +84,12 @@ Virtual note where it shows the place that the user visit and make a note
    * Map screen
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
+### Digital Wireframes & Mockups
+<img src="./wireframe.png" width=600>
 
-### [BONUS] Interactive Prototype
+### Interactive Prototype
+<img src="./prototype.gif" width=600>
 
 ## Schema 
 [This section will be completed in Unit 9]
