@@ -1,7 +1,7 @@
-Original App Design Project - README Template
+Original App Design Project
 ===
 
-# APP_NAME_HERE
+# NoteNav
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -11,16 +11,15 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-[Description of your app]
+Virtual note where shows the place that the user visits and makes a note.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Social Networking
+- **Mobile:** For mobiles/tablets
+- **Story:** Users can make a note and record their location
+- **Market:** Any individual could choose to use this app
+- **Habit:** This app could be used as often as the user wanted
+- **Scope:** We start with making virtual note on the place user visit. Potential this can be used for tourism/business purposes
 
 ## Product Spec
 
@@ -28,47 +27,69 @@ Original App Design Project - README Template
 
 **Required Must-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* User signs up or logs into their account
+* User logs out 
+* User sees a map around their location with markers on it
+* User clicks on a marker to see the detail of the note at that location
+* User makes a note with text 
+
 
 **Optional Nice-to-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* User can also add picture in note
+* User can edit profile picture
+* User can change name
 
 ### 2. Screen Archetypes
 
-* [list first screen here]
-   * [list associated required story here]
-   * ...
-* [list second screen here]
-   * [list associated required story here]
-   * ...
+* Login/Sign Up screen
+   * Users sign up or logs into their account
+* Map screen
+   * User sees a map around their location with markers on it
+   * User clicks on a marker to see the detail of the note at that location
+* Note screen
+   * User makes a note with text and/or picture 
+   * User submits the note 
+* Profile screen
+   * User logs out
+   * User edits profile picture
+   * User changes name
+* Detail screen
+   * User views the detail of a note
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* Map
+* Note
+* Profile
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Login/Sign Up screen
+   * Map screen
+* Map screen
+   * Detail screen
+   * Note screen
+   * Profile screen
+* Note screen
+   * Map screen
+   * Profile screen
+* Profile screen
+   * Map screen
+   * Profile screen
+   * Login/Sign Up screen
+* Detail screen
+   * Map screen
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
+### Digital Wireframes & Mockups
+<img src="./wireframe.png" width=600>
 
-### [BONUS] Interactive Prototype
+### Interactive Prototype
+<img src="./prototype.gif" width=600>
 
 ## Schema 
 [This section will be completed in Unit 9]
