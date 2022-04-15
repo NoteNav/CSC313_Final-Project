@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.google.android.gms.maps.MapFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import winkhanh.com.finalprojet.fragments.MapsFragment
+import winkhanh.com.finalprojet.fragments.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var bottomNav : BottomNavigationView
@@ -20,23 +19,11 @@ class MainActivity : AppCompatActivity() {
 
     val fragmentM : Fragment = MapsFragment()
     val fragmentN : Fragment = MapsFragment() //replace this for the Note Fragment
-    val fragmentP : Fragment = MapsFragment() //replace this for the Profile Fragment
+    val fragmentP : Fragment = ProfileFragment() //replace this for the Profile Fragment
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.LogOut) {
-            // Log Out has been selected
-            Toast.makeText(this, "Log out!", Toast.LENGTH_SHORT).show()
-            // Navigate to the log out activity
-            val intent = Intent(this, LogoutActivity::class.java)
-            startActivity(intent)
-            return true
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
