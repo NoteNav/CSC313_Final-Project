@@ -23,7 +23,7 @@ public class LogoutActivity extends AppCompatActivity {
         btnLogOut = findViewById(R.id.btnLogOut);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+        public void onClick(View view) {
                 logout();
             }
         });
