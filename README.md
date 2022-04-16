@@ -105,25 +105,76 @@ Virtual note where shows the place that the user visits and makes a note.
    | updatedAt     | DateTime | date when post is last updated (default field) |
 ### Networking
 #### List of network requests by screen
+
+   - LoginSignUp screen
+      - Log In
+          ```kotlin
+             ParseUser.logInInBackground(userName,password,object:LogInCallback{
+                  override fun done(user: ParseUser?, e: ParseException?) {
+                      if (e != null){
+                          //todo error handling
+                          return
+                      }
+                      //todo after user logged in
+                  }
+            })
+          ```
+      - (Create/POST) Create a new user
+         ```kotlin
+            val user: ParseUser = ParseUser()
+            user.username = userName
+            user.setPassword(password)
+            user.signUpInBackground {
+              override fun done(e: ParseException?) {
+                if (e!=null){
+                    //todo with error handling
+                    return
+                }
+                //todo after create user    
+            }
+         ```
    - Home Feed Screen
       - (Read/GET) Query all posts where user is author
-         ```swift
-         let query = PFQuery(className:"Post")
-         query.whereKey("author", equalTo: currentUser)
-         query.order(byDescending: "createdAt")
-         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
-            if let error = error { 
-               print(error.localizedDescription)
-            } else if let posts = posts {
-               print("Successfully retrieved \(posts.count) posts.")
-           // TODO: Do something with posts...
-            }
-         }
+         ```kotlin
+          val query : ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
+          query.include(Post.KEY_USER)
+          query.addDescendingOrder(Post.CREATE_AT)
+          query.findInBackground(object: FindCallback<Post>{
+            override fun done(fetchedPosts: MutableList<Post>?, e: ParseException?) {
+                if (e!=null){
+                    //todo with error handling
+                    return
+                }
+                //todo with data
+           }
          ```
    - Create Note Screen
       - (Create/POST) Create a new note object
+         ```kotlin
+            val post = Post()
+            //set data for post
+            post.saveInBackground {
+                //todo after create post
+            }
+           ```
    - Profile Screen
       -  logged out user object
-   
+          ```kotlin
+            ParseUser.logOut()
+          ```
+   - Note Detail Screen
+      - (Create/POST) Create a new note object
+         ```kotlin
+          val query : ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
+          query.include(Post.KEY_USER)
+          query.getInBackground(objectId, object: FindCallback<Post>{
+            override fun done(fetchedPosts: MutableList<Post>?, e: ParseException?) {
+                if (e!=null){
+                    //todo with error handling
+                    return
+                }
+                //todo with data
+           }
+         ```  
 #### [OPTIONAL:] Existing API Endpoints
 
