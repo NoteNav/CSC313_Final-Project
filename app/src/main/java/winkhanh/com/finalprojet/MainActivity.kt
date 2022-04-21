@@ -18,10 +18,12 @@ import winkhanh.com.finalprojet.fragments.ProfileFragment
 class MainActivity : AppCompatActivity() {
     lateinit var bottomNav : BottomNavigationView
     val fragmentManager: FragmentManager = supportFragmentManager
+
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     var fragmentM : Fragment = MapsFragment()
     val fragmentN : Fragment = MapsFragment() //replace this for the Note Fragment
+
     val fragmentP : Fragment = ProfileFragment() //replace this for the Profile Fragment
     lateinit var fusedLocationClient: FusedLocationProviderClient
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
