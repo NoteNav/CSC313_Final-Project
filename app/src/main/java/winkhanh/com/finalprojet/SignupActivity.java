@@ -53,18 +53,20 @@ public class SignupActivity extends AppCompatActivity {
     private void signupUser(String username, String password, String email) {
         Log.i(TAG, "Attempting to sign up user " + username);
 
-        ParseUser.logInInBackground(username, password, new LogInCallback() {
+        ParseUser user = new ParseUser();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.signUpInBackground(new SignUpCallback() {
             @Override
-            public void done(ParseUser user, ParseException e) {
-                if (e != null) {
-                    // TODO: better error handling
+            public void done(ParseException e) {
+                if (e == null) {
+                    Toast.makeText(SignupActivity.this, "Welcome! " + username ,Toast.LENGTH_SHORT).show();
+                    goMainActivity();
+                }  else {
                     Log.e(TAG, "Issue with sign up", e);
                     Toast.makeText(SignupActivity.this, "Issue with sign up!" ,Toast.LENGTH_SHORT).show();
-                    return;
                 }
-                // TODO: navigate to the main activity if the user has signed in properly
-                goMainActivity();
-
             }
         });
 

@@ -99,7 +99,10 @@ class MapsFragment : Fragment() {
         }
 
         (context as MainActivity).fusedLocationClient.lastLocation.addOnSuccessListener {
-            Log.d("Map",it.toString())
+            if (it==null){
+                return@addOnSuccessListener
+            }
+            // Log.d("Map",it.toString())
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude,it.longitude)))
             googleMap.moveCamera(CameraUpdateFactory.zoomTo(20.0F))
             fetchPostsNear( it.latitude, it.longitude, object: FindCallback<Post>{
