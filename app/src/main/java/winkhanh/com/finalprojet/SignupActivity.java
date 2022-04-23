@@ -53,6 +53,7 @@ public class SignupActivity extends AppCompatActivity {
     private void signupUser(String username, String password, String email) {
         Log.i(TAG, "Attempting to sign up user " + username);
 
+
         ParseUser user = new ParseUser();
         user.setUsername(username);
         user.setPassword(password);
@@ -67,6 +68,7 @@ public class SignupActivity extends AppCompatActivity {
                     Log.e(TAG, "Issue with sign up", e);
                     Toast.makeText(SignupActivity.this, "Issue with sign up!" ,Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 
