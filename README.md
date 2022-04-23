@@ -28,7 +28,7 @@ Virtual note where shows the place that the user visits and makes a note.
 **Required Must-have Stories**
 
 * [X] User Log in to their account
-* [] User signs up 
+* [X] User signs up 
 * [X] User logs out 
 * [] User sees a map around their location with markers on it
 * [] User clicks on a marker to see the detail of the note at that location
