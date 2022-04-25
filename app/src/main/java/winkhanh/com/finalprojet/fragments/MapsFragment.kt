@@ -57,7 +57,7 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 
-    fun fetchPostsNear(lat: Double, lon: Double, f: FindCallback<Post>){
+    private fun fetchPostsNear(lat: Double, lon: Double, f: FindCallback<Post>){
         val query : ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
         query.include(Post.KEY_USER)
         query.whereGreaterThanOrEqualTo(Post.KEY_LAT,lat-2)
@@ -67,7 +67,27 @@ class MapsFragment : Fragment() {
         query.findInBackground(f)
     }
 
-    fun getLocation(googleMap: GoogleMap){
+    private fun publishPosts(lat: Double, lon: Double, googleMap: GoogleMap){
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(lat, lon)))
+        googleMap.moveCamera(CameraUpdateFactory.zoomTo(20.0F))
+        fetchPostsNear(lat, lon, object: FindCallback<Post>{
+            override fun done(objects: MutableList<Post>?, e: ParseException?) {
+                if (e!=null){
+                    Log.e("Map","fetching fail")
+                    return
+                }
+                Log.d("Map",objects.toString())
+                objects?.forEach { post ->
+                    val location = post.location
+                    val pos = LatLng(location.first as Double, location.second as Double)
+                    googleMap.addMarker(MarkerOptions().position(pos).title(post.title))
+                }
+            }
+
+        })
+    }
+
+    private fun getLocation(googleMap: GoogleMap){
         if (context?.let {
                 ActivityCompat.checkSelfPermission(
                     it,
@@ -102,24 +122,10 @@ class MapsFragment : Fragment() {
             if (it==null){
                 return@addOnSuccessListener
             }
-            // Log.d("Map",it.toString())
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude,it.longitude)))
-            googleMap.moveCamera(CameraUpdateFactory.zoomTo(20.0F))
-            fetchPostsNear( it.latitude, it.longitude, object: FindCallback<Post>{
-                override fun done(objects: MutableList<Post>?, e: ParseException?) {
-                    if (e!=null){
-                        Log.e("Map","fetching fail")
-                        return
-                    }
-                    Log.d("Map",objects.toString())
-                    objects?.forEach { post ->
-                        val location = post.location
-                        val pos = LatLng(location.first as Double, location.second as Double)
-                        googleMap.addMarker(MarkerOptions().position(pos).title(post.title))
-                    }
-                }
+            Log.d("Map",it.toString())
+            publishPosts(it.latitude, it.longitude, googleMap)
 
-            })
         }
     }
+
 }
