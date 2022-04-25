@@ -30,9 +30,9 @@ Virtual note where shows the place that the user visits and makes a note.
 * [X] User can Log in to their account
 * [X] User can Sign up 
 * [X] User can Log out 
-* [] User sees a map around their location with markers on it
-* [] User clicks on a marker to see the detail of the note at that location
-* [] User makes a note with text 
+* [X] User sees a map around their location with markers on it
+* [ ] User clicks on a marker to see the detail of the note at that location
+* [ ] User makes a note with text 
 
 
 **Optional Nice-to-have Stories**
@@ -40,6 +40,11 @@ Virtual note where shows the place that the user visits and makes a note.
 * User can also add picture in note
 * User can edit profile picture
 * User can change name
+
+#### Demo
+<img src="./sprint1.gif" width=600>
+
+
 
 ### 2. Screen Archetypes
 
