@@ -6,11 +6,15 @@ import android.location.Location
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.*
 
 import com.google.android.gms.maps.model.LatLng
@@ -32,15 +36,23 @@ class MapsFragment : Fragment() {
          * Manipulates the map once available.
          * This callback is triggered when the map is ready to be used.
          * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
+
          */
+        Log.d("Map","Map Ready")
 
-        getLocation(googleMap)
+        (context as MainActivity).locationCallback = object: LocationCallback(){
+            override fun onLocationResult(p0: LocationResult) {
+                super.onLocationResult(p0)
+                Log.d("Map","get Map"+p0?.toString())
+                p0?.lastLocation.let{
+                    (context as MainActivity).latitude = p0.lastLocation.latitude
+                    (context as MainActivity).longitude = p0.lastLocation.longitude
+                    publishPosts(googleMap)
+                }
+            }
+        }
 
-
+        (context as MainActivity).subscribeLocationChange()
     }
 
     override fun onCreateView(
@@ -67,9 +79,11 @@ class MapsFragment : Fragment() {
         query.findInBackground(f)
     }
 
-    private fun publishPosts(lat: Double, lon: Double, googleMap: GoogleMap){
+    private fun publishPosts(googleMap: GoogleMap){
+        val lat = (context as MainActivity).latitude
+        val lon = (context as MainActivity).longitude
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(lat, lon)))
-        googleMap.moveCamera(CameraUpdateFactory.zoomTo(20.0F))
+        googleMap.moveCamera(CameraUpdateFactory.zoomTo(10.0F))
         fetchPostsNear(lat, lon, object: FindCallback<Post>{
             override fun done(objects: MutableList<Post>?, e: ParseException?) {
                 if (e!=null){
@@ -85,47 +99,6 @@ class MapsFragment : Fragment() {
             }
 
         })
-    }
-
-    private fun getLocation(googleMap: GoogleMap){
-        if (context?.let {
-                ActivityCompat.checkSelfPermission(
-                    it,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
-            } != PackageManager.PERMISSION_GRANTED && context?.let {
-                ActivityCompat.checkSelfPermission(
-                    it,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                )
-            } != PackageManager.PERMISSION_GRANTED
-        ) {
-            Log.d("Map", "require location")
-            ActivityCompat.requestPermissions(
-                context as MainActivity,
-                arrayOf(
-                    android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                    android.Manifest.permission.ACCESS_FINE_LOCATION
-                ),1
-            )
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return
-        }
-
-        (context as MainActivity).fusedLocationClient.lastLocation.addOnSuccessListener {
-            if (it==null){
-                return@addOnSuccessListener
-            }
-            Log.d("Map",it.toString())
-            publishPosts(it.latitude, it.longitude, googleMap)
-
-        }
     }
 
 }
