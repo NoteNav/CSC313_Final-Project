@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var fusedLocationClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
     lateinit var locationCallback: LocationCallback
-    var fragmentM : Fragment = MapsFragment()
-    val fragmentN : Fragment = MapsFragment() //replace this for the Note Fragment
+    var fragmentM : Fragment = ProfileFragment()
+    val fragmentN : Fragment = ProfileFragment() //replace this for the Note Fragment
     val fragmentP : Fragment = ProfileFragment()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -127,6 +127,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        subscribeLocationChange()
+        //subscribeLocationChange()
     }
 }

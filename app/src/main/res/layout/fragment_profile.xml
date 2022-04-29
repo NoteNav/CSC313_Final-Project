@@ -7,18 +7,33 @@
     android:layout_height="match_parent"
     tools:context=".LogoutActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPosts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="0dp"
+        android:padding="8dp" />
+
+
     <Button
         android:id="@+id/btnLogOut"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:layout_alignParentStart="false"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentEnd="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="false"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="467dp"
+        android:layout_marginTop="570dp"
+        android:layout_marginEnd="156dp"
         android:layout_marginBottom="216dp"
-        android:text="Log Out" />
+        android:text="Log Out"
+        android:textSize="10dp" />
 
 
 </RelativeLayout>

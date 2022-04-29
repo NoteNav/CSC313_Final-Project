@@ -28,7 +28,7 @@ public class Post extends ParseObject {
         return getString(KEY_TITLE);
     }
 
-    public void seTitle(String Title) {
+    public void setTitle(String Title) {
         put(KEY_DETAIL, Title);
     }
 
