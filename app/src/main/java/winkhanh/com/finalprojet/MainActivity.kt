@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var fusedLocationClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
     lateinit var locationCallback: LocationCallback
-    var fragmentM : Fragment = ProfileFragment()
+    var fragmentM : Fragment = MapsFragment()
     val fragmentN : Fragment = ProfileFragment() //replace this for the Note Fragment
     val fragmentP : Fragment = ProfileFragment()
 
