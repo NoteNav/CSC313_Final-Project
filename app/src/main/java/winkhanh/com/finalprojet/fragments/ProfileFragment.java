@@ -84,7 +84,13 @@ public class ProfileFragment extends Fragment {
     private void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
-        query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
+
+        //Log.d("Profile", ParseUser.getCurrentUser().getObjectId());
+        //query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser().getObjectId());
+        ParseQuery<ParseUser> userQuery = ParseQuery.getQuery(ParseUser.class);
+        userQuery.whereEqualTo(ParseUser.KEY_OBJECT_ID,ParseUser.getCurrentUser().getObjectId());
+        query.whereMatchesQuery(Post.KEY_USER, userQuery);
+
         query.setLimit(20);
         query.addDescendingOrder(Post.KEY_CREATED_KEY);
         query.findInBackground(new FindCallback<Post>() {
@@ -95,7 +101,7 @@ public class ProfileFragment extends Fragment {
                     return;
                 }
                 for (Post post : posts) {
-                    Log.i(TAG, "Note: " + post.getDetail() + ", username: " + post.getUser().getUsername());
+                    Log.i(TAG, "Note: " + post.getDetail() + ", username: " + post.getUser().getUsername() + " " + post.getUser().getObjectId());
                 }
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
