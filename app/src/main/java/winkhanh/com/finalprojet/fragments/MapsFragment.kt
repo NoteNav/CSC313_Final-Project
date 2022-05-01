@@ -1,6 +1,7 @@
 package winkhanh.com.finalprojet.fragments
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import androidx.fragment.app.Fragment
@@ -25,6 +26,7 @@ import com.parse.FindCallback
 import com.parse.Parse
 import com.parse.ParseException
 import com.parse.ParseQuery
+import winkhanh.com.finalprojet.DetailActivity
 import winkhanh.com.finalprojet.MainActivity
 import winkhanh.com.finalprojet.R
 import winkhanh.com.finalprojet.models.Post
@@ -47,12 +49,25 @@ class MapsFragment : Fragment() {
                 p0?.lastLocation.let{
                     (context as MainActivity).latitude = p0.lastLocation.latitude
                     (context as MainActivity).longitude = p0.lastLocation.longitude
+                    Log.d("Map","Location : ${p0.lastLocation.latitude} ${p0.lastLocation.longitude}")
                     publishPosts(googleMap)
                 }
             }
         }
 
         (context as MainActivity).subscribeLocationChange()
+        googleMap.setOnMarkerClickListener(callback2)
+    }
+
+    private val callback2 = GoogleMap.OnMarkerClickListener{ marker ->
+        val id = (marker?.tag as String)?:""
+        //jump to page ...
+        if (id!=null){
+            val i = Intent(context as MainActivity, DetailActivity::class.java)
+            i.putExtra("id", id)
+            startActivity(i)
+        }
+        true
     }
 
     override fun onCreateView(
@@ -94,7 +109,9 @@ class MapsFragment : Fragment() {
                 objects?.forEach { post ->
                     val location = post.location
                     val pos = LatLng(location.first as Double, location.second as Double)
-                    googleMap.addMarker(MarkerOptions().position(pos).title(post.title))
+                    val marker = googleMap.addMarker(MarkerOptions().position(pos).title(post.title))
+                    marker?.tag = post.objectId
+                    marker?.showInfoWindow()
                 }
             }
 
