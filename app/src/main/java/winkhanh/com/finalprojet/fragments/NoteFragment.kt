@@ -1,6 +1,7 @@
 package winkhanh.com.finalprojet.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.parse.ParseUser
 import winkhanh.com.finalprojet.MainActivity
 import winkhanh.com.finalprojet.R
 import winkhanh.com.finalprojet.models.Post
@@ -98,13 +100,19 @@ class NoteFragment : Fragment() {
 
     private fun saveNote(title: String, content: String, lat: Double, lon: Double){
         val post = Post()
-        post.detail = content
-        post.title = title
+        post.setDetail(content)
+        post.setTitle(title)
         post.setLocation(lat, lon)
+        post.setUser(ParseUser.getCurrentUser())
+        Log.d("Post", "$title $content $lat $lon")
         post.saveInBackground {
+            if (it != null){
+                Toast.makeText( context, "Something went wrong, please contact dev", Toast.LENGTH_SHORT)
+                    .show()
+            }
             etContent.setText("")
             etTitle.setText("")
-            //back to home here
+            (context as MainActivity).goBackHome()
         }
     }
 }

@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.gms.location.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import winkhanh.com.finalprojet.fragments.MapsFragment
+import winkhanh.com.finalprojet.fragments.NoteFragment
 import winkhanh.com.finalprojet.fragments.ProfileFragment
 import java.util.concurrent.TimeUnit
 
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var locationRequest: LocationRequest
     lateinit var locationCallback: LocationCallback
     var fragmentM : Fragment = MapsFragment()
-    val fragmentN : Fragment = ProfileFragment() //replace this for the Note Fragment
+    val fragmentN : Fragment = NoteFragment()
     val fragmentP : Fragment = ProfileFragment()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
