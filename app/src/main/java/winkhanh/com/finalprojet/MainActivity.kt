@@ -129,4 +129,9 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         //subscribeLocationChange()
     }
+    
+    fun goBackHome(){
+        bottomNav.selectedItemId = R.id.action_map
+        fragmentManager.beginTransaction().replace(R.id.flContainer, fragmentM).commit()
+    }
 }
