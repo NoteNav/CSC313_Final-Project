@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit
 class MainActivity : AppCompatActivity() {
     lateinit var bottomNav : BottomNavigationView
     val fragmentManager: FragmentManager = supportFragmentManager
-
+    var isLocationValid = false
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     lateinit var fusedLocationClient: FusedLocationProviderClient
