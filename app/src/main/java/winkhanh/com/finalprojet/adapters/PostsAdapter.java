@@ -1,19 +1,17 @@
-package winkhanh.com.finalprojet;
+package winkhanh.com.finalprojet.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.parse.ParseFile;
-
 import java.util.List;
 
+import winkhanh.com.finalprojet.R;
 import winkhanh.com.finalprojet.models.Post;
 
 public class PostsAdapter  extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
