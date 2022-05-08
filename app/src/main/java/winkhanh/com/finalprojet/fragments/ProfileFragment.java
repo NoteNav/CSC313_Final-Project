@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import winkhanh.com.finalprojet.LoginActivity;
-import winkhanh.com.finalprojet.PostsAdapter;
+import winkhanh.com.finalprojet.adapters.PostsAdapter;
 import winkhanh.com.finalprojet.R;
 import winkhanh.com.finalprojet.models.Post;
 
