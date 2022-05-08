@@ -32,7 +32,9 @@
         android:layout_marginTop="570dp"
         android:layout_marginEnd="156dp"
         android:layout_marginBottom="216dp"
+        android:backgroundTint="#26C6DA"
         android:text="Log Out"
+        android:textColor="#000000"
         android:textSize="10dp" />
 
 
