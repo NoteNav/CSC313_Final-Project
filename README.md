@@ -32,7 +32,7 @@ Virtual note where shows the place that the user visits and makes a note.
 * [X] User can Log out 
 * [X] User sees a map around their location with markers on it
 * [x] User clicks on a marker to see the detail of the note at that location
-* [ ] User makes a note with text 
+* [x] User makes a note with text 
 * [x] User can see all their post in profile screen
 
 **Optional Nice-to-have Stories**
@@ -49,6 +49,8 @@ Virtual note where shows the place that the user visits and makes a note.
 ##### SPRINT 2
 <img src="./sprint2.gif" width=600>
 
+##### SPRINT 3
+<img src="./sprint3.gif" width=600>
 
 
 ### 2. Screen Archetypes
