@@ -47,6 +47,7 @@ class MapsFragment : Fragment() {
                 super.onLocationResult(p0)
                 Log.d("Map","get Map"+p0?.toString())
                 p0?.lastLocation.let{
+                    (context as MainActivity).isLocationValid = true
                     (context as MainActivity).latitude = p0.lastLocation.latitude
                     (context as MainActivity).longitude = p0.lastLocation.longitude
                     Log.d("Map","Location : ${p0.lastLocation.latitude} ${p0.lastLocation.longitude}")

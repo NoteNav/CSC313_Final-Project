@@ -8,4 +8,6 @@
     <string name="title">Title</string>
     <string name="content">Content</string>
     <string name="author">author</string>
+    <string name="add_title">Add Title</string>
+    <string name="note">Note!</string>
 </resources>
