@@ -29,7 +29,7 @@ public class Post extends ParseObject {
     }
 
     public void setTitle(String Title) {
-        put(KEY_DETAIL, Title);
+        put(KEY_TITLE, Title);
     }
 
     public ParseUser getUser() {

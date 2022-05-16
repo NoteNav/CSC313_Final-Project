@@ -16,20 +16,21 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.gms.location.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import winkhanh.com.finalprojet.fragments.MapsFragment
+import winkhanh.com.finalprojet.fragments.NoteFragment
 import winkhanh.com.finalprojet.fragments.ProfileFragment
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     lateinit var bottomNav : BottomNavigationView
     val fragmentManager: FragmentManager = supportFragmentManager
-
+    var isLocationValid = false
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     lateinit var fusedLocationClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
     lateinit var locationCallback: LocationCallback
     var fragmentM : Fragment = MapsFragment()
-    val fragmentN : Fragment = ProfileFragment() //replace this for the Note Fragment
+    val fragmentN : Fragment = NoteFragment()
     val fragmentP : Fragment = ProfileFragment()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
